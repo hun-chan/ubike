@@ -8,6 +8,7 @@ const StationSearch = () => {
     const [info, setInfo] = useState(null);
     const [district, setDistrict] = useState([]);
     const [checked, setChecked] = useState(null);
+    const [searched, setSearched] = useState(null);
     const [city, setCity] = useState("台北市");
 
     useEffect (() => {
@@ -32,8 +33,8 @@ const StationSearch = () => {
         });
     },[]);
 
-    const Filter = (element, prop, mask) => {
-        return mask?mask.has(element[prop]):false;
+    const Filter = (element, attr, mask, search) => {
+        return search?element[attr[1]].includes(search):mask?mask.has(element[attr[0]]):false;
     };
 
     const ChangeCity = (val) => {
@@ -42,8 +43,14 @@ const StationSearch = () => {
 
     const ChangeDistrict = (val) => {
         setChecked(val);
-    }
+    };
 
+    const Searching = (val) => {
+        val === "" ?setSearched(null):setSearched(val);
+    }
+    if(!info){
+        return <div></div>
+    }
     return(
             <div className="w-container">
                 <div className="w">
@@ -51,10 +58,12 @@ const StationSearch = () => {
                 </div>
 
                 <div className="select-search-container w">
+                    <div>{searched?searched:""}</div>
                     <Selector elements={district} onChange={ChangeCity}></Selector>
-                    <Searcher elements={info?info.map((a)=>a.sna):[]}></Searcher>
+                    <Searcher elements={info?info.map((a)=>a.sna):[]} onSubmit={Searching}></Searcher>
                 </div>
-                <CheckboxSet elements={district} checked={checked} setCheck={ChangeDistrict} />
+                
+                <CheckboxSet elements={district} checked={checked} onCheck={ChangeDistrict} />
                 <div className="w">
                     <table className="station-table">
                         <tr>
@@ -64,7 +73,7 @@ const StationSearch = () => {
                             <th>可借車輛</th>
                             <th style={{borderRadius:"0px 10px 0px 0px"}}>可選空位</th>
                         </tr>
-                        {info?info.filter((a) => Filter(a, 'sarea', checked)).map((data)=>{
+                        {info?info.filter((a) => Filter(a, ['sarea','sna'], checked, searched)).map((data)=>{
                             return (
                             <tr key={data.sno}>
                                 <td>{city}</td>

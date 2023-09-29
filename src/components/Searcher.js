@@ -1,18 +1,26 @@
 //expect props.elements == array of element
 import { useState } from "react";
-import "../styles/searcher.css";
+import searchbutton from "../assets/search_button.svg";
 
 const Searcher = (props) =>{
     const [query, setQuery] = useState('N/A');
-
+    
     return(
-        <div className="search-container"> 
-            <input type="search" placeholder="搜尋站點" 
-                onChange={(e)=>{
-                    if(e.target.value==='') setQuery('N/A')
-                    else setQuery(e.target.value);
-                }}
-            ></input>
+        <div className="search-container">
+            <form className="search-form"
+                onSubmit={(e)=>{
+                    e.preventDefault();
+                    props.onSubmit(e.target[0].value)
+                    console.log(e.target[0].value)
+                }}>
+                <input type="search" placeholder="搜尋站點" 
+                    onChange={(e)=>{
+                        if(e.target.value==='') setQuery('N/A')
+                        else setQuery(e.target.value);
+                    }}
+                ></input>
+                <input type="image" src={searchbutton} alt="submit"></input>            
+            </form> 
             <div className="search-list">
                 {
                     props.elements.filter((ele)=>{
@@ -22,7 +30,7 @@ const Searcher = (props) =>{
                         return false;
                     }).map((ele)=>{
                         return (
-                            <span>{ele}</span>
+                            <div>{ele}</div>
                         )
                     })
                 }                

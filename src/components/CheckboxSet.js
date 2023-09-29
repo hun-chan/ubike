@@ -14,11 +14,11 @@ const CheckboxSet = (props) => {
                                         let temp = props.checked;
                                         if(e.target.checked){
                                             temp.add(e.target.id);
-                                            props.setCheck(new Set(temp));
+                                            props.onCheck(new Set(temp));
                                         }
                                         else{
                                             temp.delete(e.target.id);
-                                            props.setCheck(new Set(temp));
+                                            props.onCheck(new Set(temp));
                                         }
                                 }}/>
                                 <label>{a}</label>
