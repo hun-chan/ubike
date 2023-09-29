@@ -1,0 +1,132 @@
+.navigation {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    width: 100vw;
+    padding: 0.5rem 0rem;
+    background-color: #fff;
+    color: black;
+    border-bottom: 1px solid #e4e3e3;
+  }
+  .logo{
+    border: none;
+    margin-left: 90px;
+    width: 70px;
+    min-width: 70px;
+  }
+  
+  .navigation-menu {
+    margin-left: 10px;
+    margin-right: auto;
+    display: flex;
+  }
+  
+  .navigation-menu ul {
+    display: flex;
+    padding: 0;
+  }
+  
+  .navigation-menu li {
+    list-style-type: none;
+    margin: 0 1rem;
+  }
+  
+  .navigation-menu a {
+    color:#71853b;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    font-weight: bold;
+    font-size: small;
+  }
+  .navigation-menu li a:hover{
+    color: #b6c234;
+  }
+  .login-toggle{
+    text-decoration: none;
+    font-size: smaller;
+    display: block;
+    color: #fff;
+    border-radius: 10rem;
+    background-color: #b6c234;
+    text-align: center;
+    margin-right: 20px;
+    padding: 2px 12px;
+  }
+  
+  .menu-toggle {
+    border: 0;
+    height: 40px;
+    width: 40px;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    display: none;
+  }
+  
+  @media screen and (max-width: 666px) {
+    .logo{
+        width: 70px;
+        margin-left: 30px;
+      }
+    .menu-toggle {
+      display: block;
+    }
+    .navigation{
+      height: 60px;
+    }
+    .navigation-menu ul {
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 60px);
+      background-color: #b6c234;
+      display: none;
+    }
+  
+    .navigation-menu li {
+      text-align:left ;
+      margin: 10;
+    }
+  
+    .navigation-menu li a {
+      font-size: large;
+      font-weight: normal;
+      letter-spacing: 1px;
+      color: #fff;
+      width: 100%;
+      padding: 1.5rem 0;
+      margin-left: 5px;
+    }
+  
+    .navigation-menu li:hover {
+      color: rgb(35, 75, 36);
+    }
+    .login-toggle{
+      background-color: #fff;
+      color: #b6c234;
+      font-size: medium;
+      position: absolute;
+      top: calc(90vh);
+      left:25px;
+      padding: 8px 12px;
+      display: none;
+    }
+    .navigation.expanded a{
+      display: block;
+    }
+  
+    .navigation-menu.expanded ul {
+      display: block;
+    }
+  }
+  

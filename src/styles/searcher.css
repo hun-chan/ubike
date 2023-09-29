@@ -1,0 +1,13 @@
+.search-container{
+    margin-left: 50px;
+}
+.search-list{
+    position: absolute;
+    top: inherit;
+    background-color: aliceblue;
+}
+.search-list span{
+    display:flex;
+    flex-direction: row;
+    color:darkgreen;
+}
