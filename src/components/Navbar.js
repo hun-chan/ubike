@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import "../styles/navbar.css";
 import logo from "../assets/ubike_logo.svg";
@@ -42,7 +43,7 @@ export default function Navbar() {
             <a href="/">收費方式</a>
           </li>
           <li>
-            <a href="/contact">站點資訊</a>
+            <a href="/search">站點資訊</a>
           </li>
           <li>
             <a href="/">最新消息</a>

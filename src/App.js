@@ -1,5 +1,7 @@
 import Navbar from "./components/Navbar";
 import StationSearch from "./pages/StationSearch";
+import { Route, Routes } from "react-router";
+import React from "react";
 import "./App.css";
 
 function App() {
@@ -7,7 +9,9 @@ function App() {
     <div className="App">
       <Navbar />
       <div className="container">
-        <StationSearch/>
+        <Routes>
+          <Route path="/search" element={<StationSearch/>}></Route>
+        </Routes>
       </div>
     </div>
   );

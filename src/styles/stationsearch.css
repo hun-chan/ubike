@@ -1,19 +1,15 @@
-.selector-image-container {
-    display: flex;
-}
-.select-search-container {
-    display: flex;
-}
+
 
 .page-title{
     align-self: baseline;
+    color: #B5CC22;
 }
 
 .station-table{
     border-collapse: collapse;
     width: 100%;
     & tr th{
-        background-color: #b6c234;
+        background-color: #B5CC22;
         color: #fff;
     }
     & tr th, & tr td{
@@ -34,27 +30,68 @@
     flex-direction: column;
     align-items: center;
 }
-.bike-image {
-    width: 50%;
+
+.select-search-container {
+    grid-area: selector-searcher;
+    display: grid;
+    grid-template-columns: 175px 277px;
+    grid-template-rows: 40px;
+    grid-template-areas: "selector searcher";
+    gap:16px;
 }
-
-.search-container {
-    margin-left: 50px;
-    .search-form{
-        padding: 8px, 16px, 8px, 16px;
-        border-radius: 8px;
-        & input{
-            width: Fixed (277px);
-            height: Fixed (40px);
-            border: none;
-            border-radius: 8px;
-            background-color: #ddd;
-            + input{
-                height: 40px;
-                position: absolute;
-                top: inherit;
-
+.selector-container {
+    grid-area: selector;
+    height: 100%;
+    .selection-form{
+        height: 100%;
+        & select{
+            font-size: 15px;
+            width:100%;
+            color:#777;
+            height: 100%;
+            border: 2px solid #efefef;
+            padding: 0px 0px 0px 10px;
+            border-radius: 8px 8px;
+            background-color: #efefef;
+            :focus{
+                outline: transparent;
+                font-weight: bolder;
             }
+            & option :hover{
+                background-color: #B5CC22;
+            }
+        }
+        :focus {
+            outline: transparent;
+        }
+    }
+}
+.search-container {
+    grid-area: searcher;
+    .search-form{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        & input{
+            height: 100%;
+            border: none;
+            padding: 0px 0px 0px 10px;
+            border-radius: 8px 0px 0px 8px;
+            background-color: #efefef;
+            + input{
+                height: 100%;
+                width: 10px;
+                border-color: transparent;
+                padding-right: 10px;
+                margin-left: 0px;
+                border-radius: 0px 8px 8px 0px;
+            }
+        }
+        & input:focus {
+            outline: transparent;
+        }
+        & input::after {
+            outline: transparent;
         }
     }
     .search-list{
@@ -71,8 +108,95 @@
     color:darkgreen;
     overflow: hidden;
 }
-@media screen and (max-width: 666px){
+
+.grid-container{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4,25%);
+    grid-template-rows: 40px 40px;
+    grid-template-areas: 'selector-searcher selector-searcher . .'
+                        'all-checker . . .'
+                        'checkbox checkbox img img';
+}
+.all-checker{
+    grid-area: all-checker;
+}
+.checkbox-image-container{
+    grid-area: checkbox;
+    .grid-container2{
+        display: grid;
+        grid-template-columns: repeat(4,25%);
+        grid-template-rows: 40px;
+        grid-template-rows: min-content;
+        row-gap: 15px;
+        column-gap: 15px;
+        & input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        & label {
+            display: grid;
+            gap: 5px;
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            font-size: 15px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        & input:checked ~ .checkmark {
+            background-color: #B5CC22;
+        }
+        .checkmark {
+            justify-self: center;
+            position: absolute;
+            border-radius: 4px;
+            left: 0;
+            height: 18px;
+            width: 18px;
+            background-color: #eee;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        & input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .checkmark:after {
+            left: 6px;
+            top: 1px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+    }
+}
+.bike-image {
+    margin-left: 30px ;
+    grid-area: img;
+    width:80%;
+}
+@media screen and (max-width: 866px){
     .bike-image {
         display: none;
+    }
+    .grid-container{
+        grid-template-areas: 'selector-searcher selector-searcher . .'
+                            'all-checker . . .'
+                            'checkbox checkbox checkbox checkbox';
+    }
+    .select-search-container {
+        display: grid;
     }
 }

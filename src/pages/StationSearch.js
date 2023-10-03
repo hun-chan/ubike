@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import React from "react";
 import Selector from "../components/Selector";
 import Searcher from "../components/Searcher";
 import CheckboxSet from "../components/CheckboxSet";
@@ -56,14 +57,15 @@ const StationSearch = () => {
                 <div className="w">
                     <h2 className="page-title">站點資訊</h2>
                 </div>
-
-                <div className="select-search-container w">
-                    <div>{searched?searched:""}</div>
-                    <Selector elements={district} onChange={ChangeCity}></Selector>
-                    <Searcher elements={info?info.map((a)=>a.sna):[]} onSubmit={Searching}></Searcher>
+                <div className={("grid-container w")}>
+                    <div className="select-search-container">
+                        <Selector elements={["台北市","新北市"]} onChange={ChangeCity}></Selector>
+                        <Searcher elements={info?info.map((a)=>a.sna):[]} onSubmit={Searching}></Searcher>
+                    </div>
+                    
+                    <CheckboxSet elements={district} checked={checked} onCheck={ChangeDistrict} />
                 </div>
-                
-                <CheckboxSet elements={district} checked={checked} onCheck={ChangeDistrict} />
+
                 <div className="w">
                     <table className="station-table">
                         <tr>

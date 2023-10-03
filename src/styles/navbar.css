@@ -42,7 +42,7 @@
     font-size: small;
   }
   .navigation-menu li a:hover{
-    color: #b6c234;
+    color: #B5CC22;
   }
   .login-toggle{
     text-decoration: none;
@@ -50,7 +50,7 @@
     display: block;
     color: #fff;
     border-radius: 10rem;
-    background-color: #b6c234;
+    background-color: #B5CC22;
     text-align: center;
     margin-right: 20px;
     padding: 2px 12px;
@@ -89,7 +89,7 @@
       left: 0;
       width: 100%;
       height: calc(100vh - 60px);
-      background-color: #b6c234;
+      background-color: #B5CC22;
       display: none;
     }
   
@@ -113,7 +113,7 @@
     }
     .login-toggle{
       background-color: #fff;
-      color: #b6c234;
+      color: #B5CC22;
       font-size: medium;
       position: absolute;
       top: calc(90vh);
