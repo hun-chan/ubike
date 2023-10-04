@@ -80,7 +80,7 @@ const StationSearch = () => {
                             <tr key={data.sno}>
                                 <td>{city}</td>
                                 <td>{data.sarea}</td>
-                                <td className="station-name" style={{textAlign:"left"}}>{data.sna}</td>
+                                <td className="station-name" style={{textAlign:"left"}}>{data.sna.slice(11)}</td>
                                 <td>{data.tot}</td>
                                 <td>{data.sbi}</td>
                             </tr>

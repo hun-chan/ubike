@@ -9,7 +9,7 @@ const CheckboxSet = (props) => {
                 <form>
                     <fieldset className="grid-container2" style={{"border":"none"}}>
                         <label>
-                            <input type="checkbox" defaultChecked={false} className="all-checker"
+                            <input type="checkbox" defaultChecked={true} className="all-checker"
                                 onClick={(e)=>{
                                     if(e.target.checked){
                                         props.onCheck(new Set(props.elements));
