@@ -6,20 +6,22 @@ const CheckboxSet = (props) => {
     return (
         <>
             <div className="checkbox-image-container">
+                <fieldset className="grid-container2" style={{"border":"none"}}>
+                    <label>
+                        <input type="checkbox" defaultChecked={true} className="all-checker"
+                            onClick={(e)=>{
+                                if(e.target.checked){
+                                    props.onCheck(new Set(props.elements));
+                                }
+                                else{
+                                    props.onCheck(new Set());
+                                }
+                        }}/>全部勾選
+                        <span className="checkmark"></span>
+                    </label>    
+                </fieldset>
                 <form>
                     <fieldset className="grid-container2" style={{"border":"none"}}>
-                        <label>
-                            <input type="checkbox" defaultChecked={true} className="all-checker"
-                                onClick={(e)=>{
-                                    if(e.target.checked){
-                                        props.onCheck(new Set(props.elements));
-                                    }
-                                    else{
-                                        props.onCheck(new Set());
-                                    }
-                            }}/>全部勾選
-                            <span className="checkmark"></span>
-                        </label>
                         {props.elements.map((a)=>{
                             return (
                                 <>

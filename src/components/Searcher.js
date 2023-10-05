@@ -53,6 +53,7 @@ const Searcher = (props) =>{
                             }}
                             onClick={(e)=>{
                                 setTmp(e.target.innerHTML);
+                                props.onSubmit(e.target.innerHTML);
                             }}>
                                 {ele.slice(11)}</div>
                         )

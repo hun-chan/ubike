@@ -31,6 +31,7 @@ const StationSearch = () => {
         .catch((error) => console.error(error));
         return (()=>{
             console.clear();
+            console.log("data fetched");
         });
     },[]);
 
@@ -59,7 +60,7 @@ const StationSearch = () => {
                 </div>
                 <div className={("grid-container w")}>
                     <div className="select-search-container">
-                        <Selector elements={["台北市","新北市"]} onChange={ChangeCity}></Selector>
+                        <Selector elements={["台北市","新北市","桃園市","新竹縣"]} selected={city} onChange={ChangeCity}></Selector>
                         <Searcher elements={info?info.map((a)=>a.sna):[]} onSubmit={Searching}></Searcher>
                     </div>
                     
@@ -81,8 +82,8 @@ const StationSearch = () => {
                                 <td>{city}</td>
                                 <td>{data.sarea}</td>
                                 <td className="station-name" style={{textAlign:"left"}}>{data.sna.slice(11)}</td>
-                                <td>{data.tot}</td>
                                 <td>{data.sbi}</td>
+                                <td>{data.tot-data.sbi}</td>
                             </tr>
                             )
                         }):""}

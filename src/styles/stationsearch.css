@@ -5,23 +5,6 @@
     color: #B5CC22;
 }
 
-.station-table{
-    border-collapse: collapse;
-    width: 100%;
-    & tr th{
-        background-color: #B5CC22;
-        color: #fff;
-    }
-    & tr th, & tr td{
-        font-size: smaller;
-        width: 14.2%;
-        text-align: center;  
-        padding: 15px 0px;
-    }
-    & tr:nth-child(even) {
-        background-color: #ddd;
-    }
-}
 .w {
     width: 80%;
 }
@@ -45,29 +28,63 @@
     width: 100%;
     .selection-form{
         height: 100%;
-        width:100%;
-        & select{
-            font-size: 15px;
-            width:100%;
-            color:#777;
+        display: flex;
+        align-items: center;
+        & div ,& input{
+            width: 100%;
             height: 100%;
-            border: 2px solid #efefef;
+            border: none;
             padding: 0px 0px 0px 10px;
-            border-radius: 8px 8px;
+            border-radius: 8px 0px 0px 8px;
             background-color: #efefef;
-            :focus{
-                outline: transparent;
-                font-weight: bolder;
+            cursor: pointer;
+            + input{
+                height: 100%;
+                width: 10px;
+                border-color: transparent;
+                padding-right: 10px;
+                margin-left: 0px;
+                border-radius: 0px 8px 8px 0px;
             }
-            & option :hover{
-                background-color: #B5CC22;
-            }
-        }
-        :focus {
-            outline: transparent;
         }
     }
 }
+.city-selection {
+    display: flex;
+    align-items: center;
+}
+.city-selection p{
+    width: fit-content;
+    margin: 0;
+}
+.select-list {
+    position:absolute;
+    width:175px;
+    margin-top: 10px;
+    border-radius: 8px;
+    z-index: 10;
+    display: block;
+    background-color: #efefef;
+    flex-direction: row;
+    height: fit-content;
+    color:#323232;
+    overflow-y: scroll;
+    max-height:400px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.select-list::-webkit-scrollbar {
+    display: none;
+}
+.select-list div {
+    padding: 10px 10px;
+    font-size: 10px;
+    cursor: pointer;
+}
+.select-list div:hover{
+    background-color: #ccc;
+}
+
 .search-container {
     grid-area: searcher;
     .search-form{
@@ -112,6 +129,11 @@
     color:#323232;
     overflow-y: scroll;
     max-height:400px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.search-list::-webkit-scrollbar {
+    display: none;
 }
 .search-list div {
     padding: 10px 10px;
@@ -123,10 +145,10 @@
 .grid-container{
     width: 80%;
     display: grid;
+    row-gap:16px;
     grid-template-columns: repeat(4,25%);
-    grid-template-rows: 40px 40px;
+    grid-template-rows: 40px;
     grid-template-areas: 'selector-searcher selector-searcher . .'
-                        'all-checker . . .'
                         'checkbox checkbox img img';
 }
 .all-checker{
@@ -193,20 +215,50 @@
         }
     }
 }
+
 .bike-image {
+    align-self: end;
     margin-left: 30px ;
     grid-area: img;
     width:80%;
 }
+
+.station-table{
+    border-collapse: collapse;
+    width: 100%;
+    & tr th{
+        background-color: #B5CC22;
+        color: #fff;
+    }
+    & tr th, & tr td{
+        font-size: smaller;
+        width: 14.2%;
+        text-align: center;  
+        padding: 15px 0px;
+    }
+    & tr:nth-child(even) {
+        background-color: #ddd;
+    }
+    & tr:nth-last-child(1) {
+        border-radius: 10px;
+    }
+}
+
 @media screen and (max-width: 866px){
+    body {
+        font-size: 9px;
+    }
+    .w{
+        width: 95%;
+    }
     .bike-image {
         display: none;
     }
     .grid-container{
-        grid-template-rows: 40px 40px 40px;
+        grid-template-rows: 40px 40px;
         grid-template-areas: 'selector-searcher selector-searcher selector-searcher selector-searcher'
                             'selector-searcher selector-searcher selector-searcher selector-searcher'
-                            'all-checker . . .'
+                            
                             'checkbox checkbox checkbox checkbox';
     }
     .select-search-container {
@@ -219,6 +271,9 @@
     .selection-form{
         width: 100%;
     }
+    .select-list{
+        width: 95%;
+    }
     .search-container{
         width:100%;
     }
@@ -230,6 +285,6 @@
         }
     }
     .search-list{
-        width:80%
+        width:95%
     }
 }
